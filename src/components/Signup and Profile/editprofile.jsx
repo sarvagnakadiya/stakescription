@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 // import { Editor } from "@tinymce/tinymce-react";
 import { WithContext as ReactTags } from "react-tag-input";
 import { useEffect } from "react";
-import Upload from "../../images/man.png";
+import Upload from "../../images/edit.svg";
 import { create, CID } from "ipfs-http-client";
 import "./editprofile.scss";
 export default function EditProfile({
@@ -103,7 +103,7 @@ export default function EditProfile({
             </svg>
           </div>
           <div className="body">
-            <h3 className="edit-profile-content">Profile Image</h3>
+            <h3 className="edit-profile-content">Edit Image</h3>
             {profile_image ? (
               <>
                 <img

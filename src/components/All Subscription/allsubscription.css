@@ -1,6 +1,6 @@
 .subs-main {
   text-align: center;
-  height: 110vh;
+  height: 150vh;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
@@ -23,16 +23,68 @@
   margin-left: 10vw;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-.subs-img {
-  height: 40vh;
-  width: 30vw;
-  cursor: pointer;
-}
 
+.subs-img-bgs {
+  height: 50vh;
+  width: 25vw;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  margin-left: 2vw;
+  background: rgb(74, 185, 65);
+  background: linear-gradient(
+    90deg,
+    rgba(74, 185, 65, 1) 0%,
+    rgba(166, 226, 75, 1) 50%
+  );
+  box-shadow: rgba(0, 0, 0, 0.3) 5px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  clip-path: polygon(
+    0 0%,
+    10% 0,
+    90% 0,
+    100% 10%,
+    100% 100%,
+    90% 100%,
+    10% 100%,
+    0% 90%,
+    0% 10%
+  );
+}
+.subs-img {
+  height: 25vh;
+  width: 15vw;
+  cursor: pointer;
+  margin-left: 5vw;
+}
+.subs-img-txt {
+  margin: 10px;
+  font-size: larger;
+  font-weight: 500;
+}
+.subs-img-btn {
+  border-radius: 5px;
+  background-color: #175914;
+  color: #ffffff;
+  font-size: large;
+  height: 5vh;
+  width: 8vw;
+  cursor: pointer;
+  font-family: "Noir_regular";
+  margin: 5px;
+  margin-left: 8.5vw;
+}
 .allsub-main {
   margin-top: 10vh;
 }
-
+.allsub-item-header {
+  display: flex;
+  margin-left: -4vw;
+  /* text-align: center; */
+}
 .allsub-item {
   display: flex;
   margin: 20px;
@@ -51,6 +103,54 @@
 .allsub-img {
   height: 10vh;
   width: 10vw;
+}
+
+.allsub-btn {
+  border-radius: 5px;
+  background-color: #175914;
+  color: #ffffff;
+  font-size: large;
+  height: 5vh;
+  width: 8vw;
+  cursor: pointer;
+  font-family: "Noir_regular";
+  margin: 10px;
+}
+
+.proceed-txt {
+  font-size: larger;
+  font-weight: 600;
+  font-family: "Noir_medium";
+  margin: 10px;
+}
+
+.proceed-btn-main {
+  display: flex;
+  margin-left: 10vw;
+}
+
+.proceed-btn1 {
+  border-radius: 5px;
+  background-color: #175914;
+  color: #ffffff;
+  font-size: large;
+  height: 5vh;
+  width: 8vw;
+  cursor: pointer;
+  font-family: "Noir_regular";
+  margin: 10px;
+}
+
+.proceed-btn2 {
+  border-radius: 5px;
+  background-color: darkred;
+  color: #ffffff;
+  font-size: large;
+  height: 5vh;
+  width: 8vw;
+  cursor: pointer;
+  font-family: "Noir_regular";
+  margin: 10px;
 }
 
 @media (min-width: 1024px) and (max-width: 1440px) {
