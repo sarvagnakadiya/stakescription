@@ -7,50 +7,51 @@
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
+
 .sign-sub {
   position: relative;
   overflow: hidden;
   background: rgb(74, 185, 65);
-  background: linear-gradient(
-    90deg,
-    rgba(74, 185, 65, 1) 0%,
-    rgba(166, 226, 75, 1) 50%
-  );
+  background: linear-gradient(90deg,
+      rgba(74, 185, 65, 1) 0%,
+      rgba(166, 226, 75, 1) 50%);
   box-shadow: rgba(0, 0, 0, 0.3) 5px 8px 12px;
   width: 25vw;
   height: 75vh;
   margin-left: 40%;
   margin-top: 20vh;
   border-radius: 10px;
-  clip-path: polygon(
-    0 10%,
-    10% 0,
-    90% 0,
-    100% 0,
-    100% 90%,
-    90% 100%,
-    0 100%,
-    0% 90%,
-    0% 10%
-  );
+  clip-path: polygon(0 10%,
+      10% 0,
+      90% 0,
+      100% 0,
+      100% 90%,
+      90% 100%,
+      0 100%,
+      0% 90%,
+      0% 10%);
 }
+
 .sign-header {
   font-size: xx-large;
   font-weight: 400;
   font-family: "Noir_medium";
   padding-top: 10px;
 }
+
 .sign-icon {
   height: 5vh;
   width: 5vw;
   margin-top: 2vh;
 }
+
 .sign-text-field {
   border-radius: 5px;
   height: 5vh;
   width: 15vw;
   margin-bottom: 5vh;
 }
+
 .sign-btn {
   border-radius: 5px;
   background-color: #175914;
@@ -63,10 +64,40 @@
   margin: 10px;
 }
 
+.file {
+  background-color: #ffffff;
+  color: grey;
+  font-family: inherit;
+  font-size: inherit;
+  width: auto;
+}
+
+.picked-image {
+  // z-index: ;
+  margin: 0 auto;
+  background-color: #175912;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+}
+
+.uploaded-image {
+  height: 50px;
+  width: 50px;
+}
+
+.upload-file-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (min-width: 1024px) and (max-width: 1440px) {
   .sign-main {
     height: 150vh;
   }
+
   .sign-sub {
     width: 40vw;
     height: 90vh;
@@ -79,18 +110,26 @@
   .sign-main {
     height: 150vh;
   }
+
   .sign-sub {
     width: 50vw;
     height: 90vh;
     margin-left: 25%;
     margin-top: 30vh;
   }
+
   .sign-header {
     padding-top: 20px;
   }
+
   .sign-btn {
     height: 7vh;
     width: 15vw;
+    margin-bottom: 20px;
+  }
+
+  .file {
+    width: auto;
   }
 }
 
@@ -98,18 +137,25 @@
   .sign-main {
     height: 130vh;
   }
+
   .sign-sub {
     width: 75vw;
     height: 80vh;
     margin-left: 12vw;
     margin-top: 20vh;
   }
+
   .sign-text-field {
     height: 5vh;
     width: 30vw;
   }
+
   .sign-btn {
     height: 7vh;
     width: 25vw;
+  }
+
+  .file {
+    width: auto;
   }
 }

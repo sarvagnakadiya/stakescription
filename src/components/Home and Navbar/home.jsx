@@ -42,12 +42,10 @@ const Home = () => {
           <div className="home-main">
             <div className="home-content-main">
               <div className="home-logo">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit
+                Stake your tokens and let the interest of the staked money pay for your subscriptions
               </div>
               <div className="home-content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-                adipisci ullam similique molestiae voluptate labore doloribus
-                deleniti
+                Stakescriptions aims to become a medium of revolutionary DeFi where a user can stake some amount of tokens in a pool and gain not just interest for the staked tokens but a subscription of their choice too
               </div>
               <div className="home-button-div" style={{ cursor: "pointer" }}>
                 <div className="home-button">
@@ -81,8 +79,10 @@ const Home = () => {
 
           <img className="home-btm-box2" src={Asset2} />
           <div className="home-btm-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-            architecto ut, expedita quas deserunt omnis iure deleniti sequi
+            Let your Interest of your staked money pay for your subscription.
+            <br></br>
+            <br></br>
+            Get your staked money back in a year.
           </div>
           <div className="home-btm-imgs-main">
             <div className="home-btm-imgs-sub">
