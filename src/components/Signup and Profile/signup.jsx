@@ -10,7 +10,7 @@ import axios from "axios";
 
 const SignUp = () => {
 
-  const CONTRACT_ADDRESS = "0xc892caEe8eca7734A66F2d6Bb69F123e610dB9fc";
+  const CONTRACT_ADDRESS = "0xe0d0282893f9c234862de16e55A2460295A56E35";
 
   const [userAddress, setUserAddress] = useState("");
   const [name, setName] = useState("");
