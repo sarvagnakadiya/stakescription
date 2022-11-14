@@ -190,7 +190,7 @@ const AllSubscription = () => {
               return (<div className="subs-img-bgs" key={key} >
                 <img className="subs-img" src={item.image} />
                 <div className="subs-img-txt">{item.name}</div>
-                <div className="subs-img-txt">duration: {item.duration}</div>
+                <div className="subs-img-txt">duration: {item.duration} days</div>
                 <div className="subs-img-txt">Rate: {item.price}</div>
                 <button className="subs-img-btn" onClick={(e) => { AddDataToPopup(e, key, item.price) }}>Subscribe</button>
               </div>)
