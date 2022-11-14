@@ -15,6 +15,8 @@ import { useAccount } from 'wagmi'
 
 const Profile = ({ mainContract, account }) => {
   let arr = [1, 2, 3];
+  const [_activePlans, setActivePlans] = useState("");
+
   const { address, isConnecting, isDisconnected } = useAccount()
 
   const CONTRACT_ADDRESS = "0xe0d0282893f9c234862de16e55A2460295A56E35";
@@ -34,6 +36,8 @@ const Profile = ({ mainContract, account }) => {
   const [data, setData] = React.useState("");
 
   let planName = [];
+  const activePlans = [];
+
 
   const dataFetchedRef = useRef(false);
   useEffect(() => {
@@ -120,7 +124,7 @@ const Profile = ({ mainContract, account }) => {
 
       console.log("wait...")
       let tx;
-      const activePlans = [];
+      // const activePlans = [];
       for (let i = 0; i < userPlans.length; i++) {
         tx = await connectedContract.showUserActivePlans(address, userPlans[i]);
         console.log(tx)
@@ -130,6 +134,7 @@ const Profile = ({ mainContract, account }) => {
       }
       console.log('=V======V========V======V=======V=======V=');
       console.log(activePlans)
+      setActivePlans(activePlans);
       console.log("Your active Plans!")
       console.log('====================================');
       return activePlans;
@@ -147,15 +152,14 @@ const Profile = ({ mainContract, account }) => {
     let tx = await connectedContract.countPlan();
     console.log(tx);
     return tx;
-
-
   }
+
   const getPlanDetails = async () => {
     // let abc = await showUserActivePlans();
     // let count = await getPlansCount();
     let count = [];
     count = await showUserActivePlans();
-    console.log("Active Plans" + count);
+    console.log("Active Plans: " + count);
     if (typeof window.ethereum !== "undefined") {
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       await provider.send("eth_requestAccounts", []);
@@ -167,8 +171,9 @@ const Profile = ({ mainContract, account }) => {
         signer
       );
       console.log("wait...")
-      for (let i = 1; i <= count.length; i++) {
-        let tx = await connectedContract.getPlanDetails(i);
+      for (let i = 1; i <= activePlans.length - 1; i++) {
+        console.log(i);
+        let tx = await connectedContract.getPlanDetails(activePlans[i]);
         console.log('=V======V========V======V=======V=======V=');
         console.log(tx[0]);
         planName.push({ name: tx[0], price: parseInt(tx[1]), duration: parseInt(tx[2]), image: (tx[3]) });
@@ -243,11 +248,11 @@ const Profile = ({ mainContract, account }) => {
               console.log('====================================');
               return (<div className="profile-right-main" key={key} >
                 <div className="profile-right-sub">
-                  <img className="profile-right-icon" src={AAVE} />
-                  <div className="profile-right-txt">AAVE</div>
+                  {/* <img className="profile-right-icon" src={AAVE} />
+                  <div className="profile-right-txt">AAVE</div> */}
 
-                  <img className="subs-img" src={item.image} />
-                  <div className="subs-img-txt">{item.name}</div>
+                  <img className="profile-right-icon" src={item.image} />
+                  <div className="profile-right-txt">{item.name}</div>
                 </div>
               </div>)
             })}

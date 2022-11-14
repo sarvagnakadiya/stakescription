@@ -5,11 +5,14 @@ import MenuIcon from "./MenuIcon";
 import "./navbar.scss";
 import { useNavigate } from "react-router-dom";
 import logo from "../../images/logo.png";
-import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { useAccount, useConnect, useDisconnect, useProvider } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
+// import { useProvider } from 'wagmi'
 
 const Navbar = () => {
   // const [error, setError] = useState();
+  const provider = useProvider();
+  const _chainId = provider.getNetwork();
   let navigate = useNavigate();
   const { isConnected } = useAccount();
   const { connect } = useConnect({
@@ -20,8 +23,45 @@ const Navbar = () => {
   // const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(true);
   const [connected, setConnection] = useState(false);
+  const [error, setError] = useState();
+
+  const networks = {
+    bittorrent: {
+      chainId: `0x${Number(1029).toString(16)}`,
+      chainName: "BitTorrent Chain Donau",
+      nativeCurrency: {
+        name: "BTT",
+        symbol: "BTT",
+        decimals: 18,
+      },
+      rpcUrls: ["https://pre-rpc.bt.io/"],
+      blockExplorerUrls: ["https://testscan.bt.io"],
+    },
+  };
+
+  const changeNetwork = async ({ networkName, setError }) => {
+    try {
+      if (!window.ethereum) throw new Error("No crypto wallet found");
+      await window.ethereum.request({
+        method: "wallet_addEthereumChain",
+        params: [
+          {
+            ...networks[networkName],
+          },
+        ],
+      });
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleNetworkSwitch = async (networkName) => {
+    setError();
+    await changeNetwork({ networkName, setError });
+  };
 
   const connectWallet = () => {
+
     connect();
   };
 
@@ -93,6 +133,7 @@ const Navbar = () => {
               className="nav-button"
               onClick={() => {
                 connectWallet();
+                // handleNetworkSwitch("bittorrent");
               }}
             >
               Connect
