@@ -23,7 +23,7 @@ const Home = () => {
   const navigate = new useNavigate();
   const takeToPlayer = () => {
     setNewButton({ hidden: true });
-    setTimeout(navigate("/player"), 3000);
+    setTimeout(navigate("/signup"), 3000);
   };
   return (
     <>
@@ -47,16 +47,17 @@ const Home = () => {
               <div className="home-content">
                 Stakescriptions aims to become a medium of revolutionary DeFi where a user can stake some amount of tokens in a pool and gain not just interest for the staked tokens but a subscription of their choice too
               </div>
-              <div className="home-button-div">
+              <div className="home-button-div" style={{ cursor: "pointer" }}>
                 <div className="home-button">
                   <img
                     src={BtnImg}
+                    // style={{ cursor: "pointer" }}
                     onClick={() => {
                       takeToPlayer();
                     }}
                   />
                 </div>
-                <div className="btn-text1">Connect</div>
+                <div className="btn-text1">Signup</div>
                 <div className="btn-arrow">
                   <img src={BtnArrow} />
                 </div>
@@ -78,13 +79,10 @@ const Home = () => {
 
           <img className="home-btm-box2" src={Asset2} />
           <div className="home-btm-text">
-            Get your favourite subscription for free by staking your money
+            Let your Interest of your staked money pay for your subscription.
             <br></br>
             <br></br>
-            Get your staked money back in a Year
-            <br></br>
-            <br></br>
-            Let your staked money pay for your subscription
+            Get your staked money back in a year.
           </div>
           <div className="home-btm-imgs-main">
             <div className="home-btm-imgs-sub">

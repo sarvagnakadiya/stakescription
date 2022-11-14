@@ -5,7 +5,7 @@ contract stakescription {
     address owner; // us as NCS Owner(contract Owner)
 
     uint256 planIdCounter; // Id counter for Plan details
-    uint256[] planIdArray; // Id array for Plan details
+    uint256[] public planIdArray; // Id array for Plan details
 
     uint256[] emptyPlanCells; //empth cell for plans array
 
@@ -42,6 +42,8 @@ contract stakescription {
 
     /// @notice mapping for user's stake
     mapping(address => uint) public stakeMapping;
+
+    
 
     ///@notice Function to add user. (signUp) (adding user's data to blockchain)
     function addUser(
@@ -121,6 +123,12 @@ contract stakescription {
         planDetails memory plan = planDetails("", 0, 0,"");
         planDataMapping[_planId] = plan;
     }
+    
+    /// @notice Function to count number of plans
+    function countPlan() public view returns(uint256){
+        return planIdArray.length;
+    }
+
 
     ///@notice function to get plan details
     function getPlanDetails(uint256 _planId)

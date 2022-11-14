@@ -1,23 +1,24 @@
+import React, { useRef, useState } from "react";
 import "./signup.scss";
+import { ethers } from "ethers";
 import BG from "../../images/bg.svg";
 import { HiOutlineMail } from "react-icons/hi";
 import { FiUser } from "react-icons/fi";
 import { BiMobileAlt } from "react-icons/bi";
-import { ethers } from "ethers";
-import React, { useState } from "react";
-import stakescription_abi from "../../artifacts/contracts/stakescription.sol/stakescription.json";
-
-
-
-
+import ss_abi from "../../artifacts/contracts/stakescription.sol/stakescription.json";
+import axios from "axios";
 
 const SignUp = () => {
-  const CONTRACT_ADDRESS = "0xED21081539Da5068e8756edB49D52c71B6fa8305";  //polygon address
-  const [userAddress, setUserAddress] = useState("");
 
+  const CONTRACT_ADDRESS = "0xe0d0282893f9c234862de16e55A2460295A56E35";
+
+  const [userAddress, setUserAddress] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
+  const [userImage, setUserImage] = useState("");
+
+  // let imageUri = "";
 
   const addUser = async () => {
     if (typeof window.ethereum !== "undefined") {
@@ -29,11 +30,11 @@ const SignUp = () => {
 
       const connectedContract = new ethers.Contract(
         CONTRACT_ADDRESS,
-        stakescription_abi.abi,
+        ss_abi.abi,
         signer
       );
       console.log("wait...")
-      let tx = await connectedContract.addUser(name, email, number, "https://ipfs.io/ipfs/bafkreigdm7g3tgg3u34dai5lr4sj3rrbuirw56dn2kpgcifuckvee3h2ru");
+      let tx = await connectedContract.addUser(name, email, number, userImage);
       console.log('=V=====V=======V=========V=======V=====V=');
       console.log(tx);
       console.log("value set!")
@@ -41,7 +42,35 @@ const SignUp = () => {
     }
   }
 
+  const uploadImage = async (e) => {
+    const profile_image = e.target.files[0];
+    console.log(profile_image);
 
+    const form = new FormData();
+    form.append("file", profile_image);
+
+    const options = {
+      method: 'POST',
+      url: 'https://api.nftport.xyz/v0/files',
+      headers: {
+        'Content-Type': 'multipart/form-data; boundary=---011000010111000001101001',
+        Authorization: 'd371605c-bf67-4bb5-ae3e-dace4ac6810e'
+      },
+      data: form,
+    };
+    console.log(options);
+
+    await axios.request(options).then(function (response) {
+      console.log(response.data.ipfs_url);
+      setUserImage(response.data.ipfs_url);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  };
+
+
+
+  const fileInputRef = useRef()
   return (
     <div
       className="sign-main"
@@ -80,7 +109,25 @@ const SignUp = () => {
             onChange={(e) => { setNumber(e.target.value) }}
           ></input>
         </div>
-        <button className="sign-btn" onClick={addUser}>Submit</button>
+        <div className="sign-form-item">
+          <button className="sign-btn file" onClick={() => { fileInputRef.current.click() }}>Upload Profile Image</button>
+          <input
+            className="sign-text-field"
+            type="file"
+            placeholder="Upload Profile Image"
+            hidden
+            ref={fileInputRef}
+            onChange={(e) => {
+              uploadImage(e);
+            }}
+          ></input>
+          <div className="picked-image">
+            <img alt="uploading Image" className="uploaded-image" src={userImage}></img>
+          </div>
+        </div>
+
+        <button className="sign-btn" onClick={addUser}>Register</button>
+
       </div>
     </div>
   );
