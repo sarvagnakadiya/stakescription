@@ -122,7 +122,7 @@ const SignUp = () => {
             }}
           ></input>
           <div className="picked-image">
-            <img alt="uploading Image" className="uploaded-image" src={userImage}></img>
+            <img className="uploaded-image" src={userImage}></img>
           </div>
         </div>
 
