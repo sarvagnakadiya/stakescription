@@ -99,11 +99,11 @@ const Navbar = () => {
             <div className="navtextstyle">Home</div>
           </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link to="/signup" className="nav-link">
             <div className="navtextstyle">Sign In</div>
           </Link>
-        </li>
+        </li> */}
         {connected ? (
           <>
             <li className="nav-item">
@@ -128,17 +128,30 @@ const Navbar = () => {
             </li>
           </>
         ) : (
-          <li className="nav-item">
-            <button
-              className="nav-button"
-              onClick={() => {
-                connectWallet();
-                // handleNetworkSwitch("bittorrent");
-              }}
-            >
-              Connect
-            </button>
-          </li>
+          <div className="nav-disappear">
+            <li className="nav-item">
+              <Link to="/signup" className="nav-link">
+                <div className="navtextstyle">Sign In</div>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <button
+                className="nav-button"
+                onClick={() => {
+                  connectWallet();
+                  // handleNetworkSwitch("bittorrent");
+                }}
+              >
+                Connect
+              </button>
+            </li>
+            <li>
+              <button className="popup-i" onClick={() => {
+                handleNetworkSwitch("bittorrent");
+              }}>Add BTTC
+              </button>
+            </li>
+          </div>
         )}
       </ul>
       <div

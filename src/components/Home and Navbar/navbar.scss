@@ -18,6 +18,7 @@
   height: 50px;
   width: 150px;
 }
+
 // .nav-links {
 //   // display: grid;
 //   display: flex;
@@ -45,10 +46,12 @@ ul.nav-links {
   display: flex;
   align-items: center;
   align-content: center;
+
   li {
     padding: 0 10px;
     border-right: 1px solid #ffffff;
   }
+
   :last-child {
     padding: 0 10px;
     border-right: none;
@@ -99,11 +102,9 @@ ul.nav-links {
   font-weight: 800;
   animation: login-color-changer 10s ease infinite;
   background: rgb(74, 185, 65);
-  background: linear-gradient(
-    90deg,
-    rgba(74, 185, 65, 1) 0%,
-    rgba(166, 226, 75, 1) 50%
-  );
+  background: linear-gradient(90deg,
+      rgba(74, 185, 65, 1) 0%,
+      rgba(166, 226, 75, 1) 50%);
 }
 
 .nav-disconnect {
@@ -116,18 +117,37 @@ ul.nav-links {
   border: 0px;
   font-weight: 800;
   background: rgb(74, 185, 65);
-  background: linear-gradient(
-    90deg,
-    rgba(74, 185, 65, 1) 0%,
-    rgba(166, 226, 75, 1) 50%
-  );
+  background: linear-gradient(90deg,
+      rgba(74, 185, 65, 1) 0%,
+      rgba(166, 226, 75, 1) 50%);
 }
 
-@media only screen and (min-width: 1024px) {
+.nav-disappear {
+  display: flex;
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+.popup-i {
+  width: 150px;
+  border-radius: 10px;
+  padding: 3px;
+  font-family: "Noir_regular";
+  cursor: pointer;
+  color: #fff;
+  border: 0px;
+  font-weight: 800;
+  background: rgb(74, 185, 65);
+  background: linear-gradient(90deg,
+      rgba(74, 185, 65, 1) 0%,
+      rgba(166, 226, 75, 1) 50%);
 }
+
+.popup-div {
+  color: #000;
+}
+
+@media only screen and (min-width: 1024px) {}
+
+@media (min-width: 768px) and (max-width: 1023px) {}
 
 @media (max-width: 767px) {
   .navbar {
@@ -173,6 +193,7 @@ ul.nav-links {
     gap: 20px;
     border-radius: 10px;
   }
+
   .nav-button {
     margin-bottom: 20px;
   }

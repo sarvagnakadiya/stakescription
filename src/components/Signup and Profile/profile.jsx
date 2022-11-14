@@ -19,7 +19,7 @@ const Profile = ({ mainContract, account }) => {
 
   const { address, isConnecting, isDisconnected } = useAccount()
 
-  const CONTRACT_ADDRESS = "0xe0d0282893f9c234862de16e55A2460295A56E35";
+  const CONTRACT_ADDRESS = "0x99746e1fEeFb6C8D26c95E713C7d47C6327CFA95";
 
   const [userAddress, setUserAddress] = useState("");
   const [isLoading, setLoading] = React.useState(true);
