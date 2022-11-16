@@ -171,7 +171,7 @@ const Profile = ({ mainContract, account }) => {
         signer
       );
       console.log("wait...")
-      for (let i = 1; i <= activePlans.length - 1; i++) {
+      for (let i = 0; i <= activePlans.length - 1; i++) {
         console.log(i);
         let tx = await connectedContract.getPlanDetails(activePlans[i]);
         console.log('=V======V========V======V=======V=======V=');
