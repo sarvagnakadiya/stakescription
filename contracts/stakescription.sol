@@ -1,4 +1,4 @@
-// SPDX-License-Identifier:MIT
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 contract stakescription {
@@ -43,7 +43,10 @@ contract stakescription {
     /// @notice mapping for user's stake
     mapping(address => uint) public stakeMapping;
 
-    
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the contract owner can call this function");
+        _;
+    }
 
     ///@notice Function to add user. (signUp) (adding user's data to blockchain)
     function addUser(
@@ -69,7 +72,6 @@ contract stakescription {
     function deleteUser() public {
         delete userDataMapping[msg.sender];
     }
-
 
     /// @notice Function to edit users' name
     function editUserName(string memory _name) public {
@@ -103,8 +105,7 @@ contract stakescription {
         uint256 _price,
         uint256 _timePeriod,
         string memory _planImage
-    ) public {
-        require(msg.sender == owner, "only owner can add plans");
+    ) public onlyOwner {
         if (emptyPlanCells.length != 0) {
             planIdCounter = emptyPlanCells[emptyPlanCells.length - 1];
             emptyPlanCells.pop();
@@ -118,7 +119,7 @@ contract stakescription {
     }
 
     ///@notice function to delete plan
-    function deletePlan(uint256 _planId) public {
+    function deletePlan(uint256 _planId) public onlyOwner {
         emptyPlanCells.push(_planId);
         planDetails memory plan = planDetails("", 0, 0,"");
         planDataMapping[_planId] = plan;
@@ -128,7 +129,6 @@ contract stakescription {
     function countPlan() public view returns(uint256){
         return planIdArray.length;
     }
-
 
     ///@notice function to get plan details
     function getPlanDetails(uint256 _planId)
@@ -148,10 +148,6 @@ contract stakescription {
         userToPlanMapping[_userId].push(_planId);
     }
 
-    // function planPrice(uint256 _planId) public view returns(uint) {
-    //     return planDataMapping[_planId].price;
-    // }
-
     /// @notice function to show user's subscribed plans
     function showUserPlans(address _userId)
         public
@@ -170,4 +166,9 @@ contract stakescription {
         return isUserPlanActive[_userId][_planId];
     }
 
+    // Function to allow the contract owner to withdraw funds
+    function withdraw(uint256 amount) public onlyOwner {
+        require(address(this).balance >= amount, "Insufficient balance in the contract");
+        payable(owner).transfer(amount);
+    }
 }
